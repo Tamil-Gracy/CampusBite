@@ -1,15 +1,23 @@
 import { menuItems } from './menuItems.js';
 const getcartIds = localStorage.getItem('cartIds');
 const cartIds = JSON.parse(getcartIds);
-//console.log(cartIds); 
+//console.log(cartIds.length); 
 const cartCards= document.getElementById('cartItems');
+const cartcontainer= document.getElementById('cart-container');
+const orderTotalSection= document.getElementById('orderTotalSection');
+if(cartIds.length==0){
+        const infoDiv = document.createElement('div');
+        infoDiv.innerHTML = '<h1 class="my-10 text-[#FF5A4F]">Your cart is feeling lonely! Start adding items!</h1> <a href="menu.html" class="my-10 border py-4 px-5 rounded bg-[#FF5A4F] text-white" >Continue Shopping</a>';
+        cartcontainer.append(infoDiv);
+        orderTotalSection.classList.add('hidden');
+            // alert('empty cart');
+        
+}else if(cartIds.length>0){
 menuItems.forEach((item) => {
     cartIds.forEach((cartItemId) => {
-        if (cartItemId == '') {
-           cartCards.innerHTML = '<h1>Cart is Empty</h1>';
-            // alert('empty cart');
-        }
-        else if (item.id == cartItemId) {
+       
+         
+        if (item.id == cartItemId) {
             //alert('items available');
             const cartDiv = document.createElement('div');
             cartDiv.innerHTML = `
@@ -42,6 +50,7 @@ menuItems.forEach((item) => {
         }
     })
 });
+}
 
 const cartitems = document.querySelectorAll(".cart-item");
 const subtotalAmount = document.getElementById("subtotalAmount");
