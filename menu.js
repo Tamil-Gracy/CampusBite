@@ -42,11 +42,9 @@ function displayMenu(items) {
 
 // ---------- FILTER by selected categories ----------
 function getSelectedCategories() {
-  const allItems = [...menuCategory];
+  const allItems = [...menuCategory]; //Array.from
   // console.log(allItems);
-  const selected = allItems.filter((item) =>
-    item.classList.contains("selected")
-  );
+  const selected = allItems.filter((item) => item.classList.contains("selected"));
   // console.log(selected);
   const categories = selected.map((item) => item.id);
   //const categories = selected.filter((item) => item.dataset.category);
@@ -127,6 +125,8 @@ cartBtn.forEach((cartItem) => {
     cartItem.classList.toggle("item-added");
 
     if (cartItem.classList.contains("item-added")) {
+      console.log(cartCountSpan);
+      cartCountSpan.classList.remove('hidden');
       cartItem.textContent = "Remove";
       cartItem.classList.toggle('text-green-900');
       cartItem.classList.toggle('border-[#39C6A5]');
@@ -136,11 +136,11 @@ cartBtn.forEach((cartItem) => {
       cartItem.classList.toggle('hover:bg-[#FF5A4F]');
 
       cartCount = cartCount + 1;
-      cartCountSpan.textContent = `(${cartCount})`;
+      cartCountSpan.textContent = `${cartCount}`;
     } else {
       cartItem.textContent = "Add";
       cartCount = cartCount - 1;
-      cartCountSpan.textContent = cartCount > 0 ? `(${cartCount})` : "";
+      cartCountSpan.textContent = cartCount > 0 ? `${cartCount}` : "";
     }
   });
 });

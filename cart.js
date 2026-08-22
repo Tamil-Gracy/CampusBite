@@ -86,7 +86,7 @@ cartitems.forEach(function (items) {
     // REMOVE
     removeItems.addEventListener("click", function () {
 
-        if (sum > 0) {
+        if (sum > 1) {
 
             sum--;
 
@@ -144,9 +144,14 @@ function calculate() {
     if (total > 200) {
         delivery = 0;
         delAmount.textContent = "Free";
-    } else {
+    } else if(total >0){
         delivery = 40;
         delAmount.textContent = "₹40";
+    }
+    else{
+         delivery = 0;
+        delAmount.textContent = "₹0";
+
     }
 
     let discount = 0;
@@ -178,7 +183,6 @@ calculate();
 
 const couponInput = document.getElementById("couponInput");
 const couponBtn = document.getElementById("couponBtn");
-const couponMessage = document.getElementById("couponMessage");
 
 
 if (couponBtn) {
@@ -214,6 +218,12 @@ if (couponBtn) {
     });
 
 }
+
+
+const checkout=document.querySelector(".checkout-btn");
+checkout.addEventListener("click",function(){
+    window.location.href = "checkout.html";
+})
 
 
 

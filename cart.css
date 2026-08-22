@@ -24,11 +24,10 @@ body{
 
 }
 .cart-header__title{
-    font-size:30px;
-    font-weight: bold;
+    font-size:20px;
 }
 .back-icon{
-    font-size: 30px;
+    font-size: 20px;
 }
 .cart-items{
     box-shadow: 5px 5px 5px #ccc;
