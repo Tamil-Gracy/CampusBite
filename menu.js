@@ -42,7 +42,7 @@ function displayMenu(items) {
 
 // ---------- FILTER by selected categories ----------
 function getSelectedCategories() {
-  const allItems = [...menuCategory]; 
+  const allItems = [...menuCategory];
   // console.log(allItems);
   const selected = allItems.filter((item) =>
     item.classList.contains("selected")
@@ -90,6 +90,7 @@ function applyFiltersAndSort() {
   //console.log(result);
 
   displayMenu(result);
+
 }
 
 // ---------- Event listeners ----------
@@ -103,13 +104,13 @@ menuCategory.forEach((cat) => {
 });
 
 if (sortDropdown) {
-  sortDropdown.addEventListener("change", ()=> {
+  sortDropdown.addEventListener("change", () => {
     applyFiltersAndSort();
   });
 }
 
 // ---------- Initial load ----------
-applyFiltersAndSort(); 
+applyFiltersAndSort();
 
 
 
@@ -133,7 +134,7 @@ cartBtn.forEach((cartItem) => {
       cartItem.classList.toggle('text-[#FF5A4F]');
       cartItem.classList.toggle('border-[#FF5A4F]');
       cartItem.classList.toggle('hover:bg-[#FF5A4F]');
-      
+
       cartCount = cartCount + 1;
       cartCountSpan.textContent = `(${cartCount})`;
     } else {
@@ -156,4 +157,59 @@ viewCart.addEventListener('click', () => {
 })
 
 
+//Mob filter and sort activity
 
+const mobFilter = document.getElementById('mobFilter');
+const mobSort = document.getElementById('mobSort');
+const menuCategoriesDiv = document.getElementById('menuCategories');
+const menuCategoryList = document.querySelectorAll('.menuCategory');
+const selectList = document.getElementById('sortDropdown');
+const menuSortByDiv = document.getElementById('menuSortBy');
+const filterClose = document.getElementById('filterClose');
+const sortClose = document.getElementById('sortClose');
+const filterApply = document.getElementById('filterApply');
+const filterClear = document.getElementById('filterClear');
+const sortApply = document.getElementById('sortApply');
+const sortClear = document.getElementById('sortClear');
+const ticks = document.querySelectorAll('.tick');
+
+mobFilter.addEventListener('click', () => {
+  menuCategoriesDiv.classList.toggle('hidden');
+  menuSortByDiv.classList.add('hidden');
+})
+mobSort.addEventListener('click', () => {
+  menuSortByDiv.classList.toggle('hidden');
+  menuCategoriesDiv.classList.add('hidden');
+})
+
+filterClose.addEventListener('click', () => {
+  menuCategoriesDiv.classList.toggle('hidden');
+})
+sortClose.addEventListener('click', () => {
+  menuSortByDiv.classList.toggle('hidden');
+})
+//filter close activity
+filterClear.addEventListener('click', () => {
+  menuCategoryList.forEach((list) => {
+    list.classList.remove('selected');
+    ticks.forEach((t) => {
+      t.classList.add('hidden');
+     // console.log(t);
+    });
+  })
+
+})
+//filter apply activity
+filterApply.addEventListener('click', () => {
+menuCategoriesDiv.classList.toggle('hidden');
+});
+
+//sort close activity
+sortClear.addEventListener('click', () => {
+    selectList.value='default';
+})
+
+//sort apply activity
+sortApply.addEventListener('click', () => {
+menuSortByDiv.classList.toggle('hidden');
+});

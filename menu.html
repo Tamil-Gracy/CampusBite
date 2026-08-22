@@ -11,13 +11,27 @@
     <link rel="stylesheet" href="./menustyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="./menuItems.js" type="module"></script>
     <script src="./menu.js" type="module"></script>
 </head>
 
-<body class="poppins-regular">
+<body class="poppins-regular w-full">
+    <div class="mob-filter-sort w-screen flex justify-around items-center md:hidden bg-[#FF5A4F] text-white fixed bottom-0 z-100 min-h-[70px]">
+        <div class="mobFilter flex justify-between gap-2  items-center" id="mobFilter">
+            <i class="fa-solid fa-filter"></i>
+            <span>Filter</span>
+        </div>
+        <div class="mobSort flex justify-between gap-2  items-center" id="mobSort">
+            <i class="fa-solid fa-sort"></i>
+            <span>Sort</span>
+        </div>
+    </div>
     <main class="max-w-[1200px] w-full px-[16px] mx-auto my-0 ">
         <section class="breadcrumbs text-xs">
             <p class="py-2">
@@ -102,9 +116,13 @@
             </section>
             <section id="menuSection" class="menuSection">
                 <div class="grid grid-wrap md:grid-cols-[0.6fr_2fr]">
-                    <div class="menuCategories border border-[#efefef] rounded md:m-5 hidden md:block">
-                        <h4 class="text-md p-5 hidden md:block font-medium">
+
+                    <div id="menuCategories" class="menuCategories border border-[#efefef] rounded p-5 md:m-5  md:block fixed top-[20%] bottom-0 md:relative md:top-0 left-0 bg-white hidden md:block z-10 shadow-[0px_3px_15px_10px_rgb(0_0_0_/_25%)] md:shadow-none">
+                        <h4 class="flex gap-5 justify-between items-center md:block text-md p-5  md:block font-medium bg-[#fef3ed] md:bg-transparent">
                             Categories
+                            <div class="filterClose md:hidden" id="filterClose">
+                                    <i class="fa-solid fa-close"></i>
+                            </div> 
                         </h4>
                         <ul
                             class="menuCategories__list flex flex-row p-3 items-center md:items-start md:flex-col flex-wrap text-sm">
@@ -115,7 +133,7 @@
                                     <i class="fa-solid fa-star mr-2 text-sm text-[#FF5A4F]"></i>
                                     Bestsellers
                                 </div>
-                                <span class="float-right tick text-[#39C6A5] font-bold">
+                                <span class="float-right tick text-[#39C6A5] font-bold" id="tick">
                                     ✓
                                 </span>
                             </li>
@@ -127,7 +145,7 @@
                                     </i>
                                     Veg
                                 </div>
-                                <span class="float-right tick text-[#39C6A5] font-bold hidden">
+                                <span class="float-right tick text-[#39C6A5] font-bold hidden" id="tick">
                                     ✓
                                 </span>
                             </li>
@@ -139,7 +157,7 @@
                                     </i>
                                     Non-Veg
                                 </div>
-                                <span class="float-right tick text-[#39C6A5] font-bold hidden">
+                                <span class="float-right tick text-[#39C6A5] font-bold hidden" id="tick">
                                     ✓
                                 </span>
                             </li>
@@ -151,18 +169,19 @@
                                     </i>
                                     Burgers
                                 </div>
-                                <span class="float-right tick text-[#39C6A5] font-bold hidden">
+                                <span class="float-right tick text-[#39C6A5] font-bold hidden" id="tick">
                                     ✓
                                 </span>
                             </li>
-                            <li id="Fries" class="menuCategory w-full p-2 md:p-3 text-sm flex items-center md:gap-4 cursor-pointer hover:bg-[#fef3ed] hover:text-[#ff5a4f] justify-between"
+                            <li id="Fries"
+                                class="menuCategory w-full p-2 md:p-3 text-sm flex items-center md:gap-4 cursor-pointer hover:bg-[#fef3ed] hover:text-[#ff5a4f] justify-between"
                                 data-category="Fries">
                                 <div>
                                     <i class="fa-solid fa-bacon mr-2 text-sm text-[#FF5A4F]">
                                     </i>
                                     Fries
                                 </div>
-                                <span class="float-right tick text-[#39C6A5] font-bold hidden">
+                                <span class="float-right tick text-[#39C6A5] font-bold hidden" id="tick">
                                     ✓
                                 </span>
                             </li>
@@ -174,7 +193,7 @@
                                     </i>
                                     Drinks
                                 </div>
-                                <span class="float-right tick text-[#39C6A5] font-bold hidden">
+                                <span class="float-right tick text-[#39C6A5] font-bold hidden" id="tick">
                                     ✓
                                 </span>
                             </li>
@@ -186,21 +205,30 @@
                                     </i>
                                     Combos
                                 </div>
-                                <span class="float-right tick text-[#39C6A5] font-bold hidden">
+                                <span class="float-right tick text-[#39C6A5] font-bold hidden" id="tick">
                                     ✓
                                 </span>
                             </li>
                         </ul>
+                        <div class="filterAction flex gap-5 justify-around md:hidden">
+                            <button id="filterClear" class="px-4 w-[50%] py-1 border border-[#ccc] rounded">Clear</button>
+                            <button id="filterApply" class="px-4 w-[50%] py-1 border border-[#ccc] rounded bg-[#FF5A4F] text-white">Apply</button>
+                        </div>
                     </div>
-                    <div class="menuFilters md:p-5 border border-[#efefef] rounded p-3 md:m-5 ">
-                        <div class="menuFilters__top flex items-center justify-between mb-5">
-                            <h4 class="text-md mb-3 font-medium">
-                                Best Sellers
+                    <div class="allItems md:p-5 border border-[#efefef] rounded p-3 md:m-5 ">
+                        <div id="menuSortBy" class="menuSortBy__top md:flex items-center justify-between mb-5  absolute md:relative top-0 left-0 bg-white hidden md:block w-full p-3 md:p-0 fixed top-[30%] bottom-0 md:relative md:top-0 left-0 bg-white hidden md:block z-10 shadow-[0px_3px_15px_10px_rgb(0_0_0_/_25%)]  md:shadow-none" >
+                            <h4 class="text-md mb-3 font-medium hidden md:block">
+                                All Products
                             </h4>
-                            <div class="sortBy text-sm">
-                                <label for="sort" class="text-sm hidden md:block">
+                            <div class="sortBy text-sm md:flex md:justify-between md:items-center">
+                                <label for="sort" class="text-sm flex justify-between flex-wrap md:block p-5 md:p-0 bg-[#fef3ed] md:bg-transparent w-full">
                                     Sort by:
-                                    <select class="p-2 border border-[#efefef] rounded" name="sortDropdown"
+                                   <div class="sortClose md:hidden" id="sortClose">
+                                    <i class="fa-solid fa-close"></i>
+                                   </div> 
+                                   
+                                </label>
+                                 <select class="p-2 my-5  border border-[#efefef] w-full rounded" name="sortDropdown"
                                         id="sortDropdown">
                                         <option value="default">
                                             Popular
@@ -218,8 +246,11 @@
                                             Name : Z - A
                                         </option>
                                     </select>
-                                </label>
                             </div>
+                             <div class="sortAction flex gap-5 justify-around md:hidden">
+                            <button id="sortClear" class="px-4 w-[50%] py-1 border border-[#ccc] rounded">Clear</button>
+                            <button id="sortApply" class="px-4 w-[50%] py-1 border border-[#ccc] rounded bg-[#FF5A4F] text-white">Apply</button>
+                        </div>
                         </div>
                         <div id="menuCard" class="menuCard grid-cols-1 md:grid-cols-2 gap-3 grid">
                         </div>
